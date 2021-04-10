@@ -1,0 +1,15 @@
+div.warning {
+	color : red;
+}
+
+header.title > h2 {
+	text-align : center;
+}
+
+div#select-city{
+	background-color : rgb(53, 53, 53);
+}
+
+header > h2 {
+	font-weight : 900;
+}
