@@ -24,7 +24,6 @@
 	</head>
 	<script type="text/javascript">	
 		$(document).ready(function(){
-			// enter로 로그인 실행
 	    $("form[id=loginform]").keydown(function (key) {
 	 
 	        if(key.keyCode == 13){

@@ -16,11 +16,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClr1TpHJn7u-Cui95IBJrXhobv2gS_tDU&callback=initMap"
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH4mGtGTjkph4bcBxYyfERsJaegQgoIHA&callback=initMap"
         async defer></script>
+        
 		<link rel="stylesheet" href="${root}/assets/css/main.css" />
 		<link rel="stylesheet" href="${root}/assets/css/mine.css" />
 	</head>
@@ -28,13 +29,15 @@
 		<%@ include file="/user/confirm.jsp" %>
 		<!-- Header -->
 			<%@ include file="/board/header.jsp"%>
-			
+			<%@ include file="/deal/selectaddr.jsp"%>
 		<!-- One -->
 			<section id="one">
 				<div class="inner">
 					<header class="pb-5">
 						<h2>거래 검색</h2>
-						
+						<div class="row grid-space-10">
+                        <div class='col-12 justify-content-center' id="map" style="width: 800px; height: 400px"></div>
+                    </div>
 					</header>
 					<div class="row">
 						<div class="col-3">
@@ -134,11 +137,11 @@
 			<%@ include file="/board/footer.jsp" %>
 			
 		<!-- Scripts -->
-			<script src="${root}/assets/js/map.js"></script>
 			<script src="${root}/assets/js/jquery.min.js"></script>
 			<script src="${root}/assets/js/skel.min.js"></script>
 			<script src="${root}/assets/js/util.js"></script>
 			<script src="${root}/assets/js/main.js"></script>
+			<script src="${root}/assets/js/map.js"></script>
 
 	</body>
 </html>

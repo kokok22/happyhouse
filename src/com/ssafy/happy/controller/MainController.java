@@ -1,6 +1,8 @@
 package com.ssafy.happy.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import com.ssafy.happy.model.HouseInfoDto;
 import com.ssafy.happy.model.MemberDetailDto;
 import com.ssafy.happy.model.MemberDto;
+import com.ssafy.happy.model.SidoGugunCodeDto;
+import com.ssafy.happy.model.service.HouseMapServiceImpl;
 import com.ssafy.happy.model.service.MemberServiceImpl;
 
 @WebServlet("/main")
@@ -56,7 +64,7 @@ public class MainController extends HttpServlet{
 		else if("mvsearch".equals(act))
 			response.sendRedirect(root+"/deal/search.jsp");
 	}
-	
+
 	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		String email = request.getParameter("email");
