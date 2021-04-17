@@ -16,41 +16,10 @@
 		<link rel="stylesheet" href="${root}/assets/css/main.css" />
 		<link rel="stylesheet" href="${root}/assets/css/mine.css" />
 	</head>
-	<script type="text/javascript">
-		function signup() {
-			if($("#userId").val() == "") {
-				alert("아이디를 입력해주세요.");
-				return;
-			} else if($("#userPwd").val() == "") {
-				alert("비밀번호를 입력해주세요."); 
-				return;
-			}else if($("#userPwdchk").val() != $("#userPwd").val()) {
-				alert("비밀번호가 일치하지 않습니다.");
-				return;
-			}  else if($("#lastName").val() == "") {
-				alert("성을 입력해주세요.");
-				return;
-			}  else if($("#firstName").val() == "") {
-				alert("이름을 입력해주세요.");
-				return;
-			}  else if($("#email").val() == "") {
-				alert("이메일을 입력해주세요.");
-				return;
-			}  else if(!CheckEmail($("#email").val())) {
-				alert("이메일 형식으로 입력해주세요.");
-				return;
-			}  else if($("#address").val() == "") {
-				alert("주소를 입력해주세요.");
-				return;
-			} else {
-				$("#signupform").attr("action", "${root}/main").submit();
-			}
-		}
-	</script>
-	
 	<body>
 		<!-- Header -->
 			<%@ include file="../board/header.jsp"%>
+			<%@ include file="../user/duplicateCheck.jsp"%>
 
 		<!-- Main -->
 			<section class="container 50% py-5">
@@ -65,10 +34,11 @@
 					<div class="row uniform 50%">
 						<div class="9u 12u$">
 							<input type="text" name="userId" id="userId" value="" placeholder="아이디" />
+							<input type="hidden" id="chk" value="false" />
 							<div class="container warning" id="idwar">중복확인 필수</div>
 						</div>
 						<div class="2u 12u$">
-							<input type="button" name="idchk" id="idchk" value="중복 확인"/>
+							<input type="button" name="idchk" id="idchk" value="중복 확인" onclick="javascript:check();"/>
 						</div>
 						<div class="12u$">
 							<input type="password" name="userPwd" id="userPwd" value="" placeholder="비밀번호" />

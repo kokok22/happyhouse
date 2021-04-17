@@ -110,8 +110,6 @@ public class HouseMapController extends HttpServlet {
 			String aptname = request.getParameter("aptname");
 			String sort = request.getParameter("sort");
 			
-			System.out.println(aptname+" "+sort);
-			
 			PrintWriter out = response.getWriter();
 			List<DealDto> list = null;
 			JSONArray arr = new JSONArray();

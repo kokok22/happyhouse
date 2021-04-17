@@ -79,5 +79,10 @@ public class MemberServiceImpl implements MemberService {
 	public String find(String userId, String email) {
 		return MemberDaoImpl.getMemberDao().find(userId, email);
 	}
+	
+	@Override
+	public boolean chkId(String userId) {
+		return MemberDaoImpl.getMemberDao().chkId(userId);
+	}
 
 }

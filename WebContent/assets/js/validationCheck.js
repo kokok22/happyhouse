@@ -21,6 +21,13 @@ $("#email").keyup(function(){
 		$("#emailwar").show();
 });
 
+$("#userId").keyup(function(){
+	$("#chk").val("false");
+	$("#idwar").text("중복확인 필수");
+});
+
+
+
 
 $("#userPwd").keyup(function(){
 	var v1 = $("#userPwd").val();

@@ -47,6 +47,8 @@ public class MainController extends HttpServlet{
 			response.sendRedirect(root+"/user/signup.jsp");
 		else if("signup".equals(act))
 			signup(request, response);
+		else if("idcheck".equals(act))
+			idcheck(request, response);
 		else if("mvmodify".equals(act))
 			response.sendRedirect(root+"/user/modify.jsp");
 		else if("modify".equals(act))
@@ -63,6 +65,31 @@ public class MainController extends HttpServlet{
 			response.sendRedirect(root+"/board/news.jsp");
 		else if("mvsearch".equals(act))
 			response.sendRedirect(root+"/deal/search.jsp");
+	}
+
+	private void idcheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String userId = request.getParameter("id");
+
+		JSONArray arr = new JSONArray();
+		PrintWriter out = response.getWriter();
+		try {
+			boolean flag = MemberServiceImpl.getMemberService().chkId(userId);
+			if(flag) {
+				JSONObject obj = new JSONObject();
+				obj.put("chk", true);
+				arr.add(obj);
+			}
+		} catch (Exception e) {
+			arr = new JSONArray();
+			JSONObject obj = new JSONObject();
+			obj.put("message_code", "-1");
+			arr.add(obj);
+			e.printStackTrace();
+		} finally {
+			out.print(arr.toJSONString());
+			out.close();
+		}
+		
 	}
 
 	private void find(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

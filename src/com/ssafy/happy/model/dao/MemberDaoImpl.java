@@ -233,6 +233,31 @@ public class MemberDaoImpl implements MemberDao {
 		return result;
 	}
 	
-	
+	public boolean chkId(String userId) {
+		boolean flag = true;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBUtil.getConnect();
+			String sql = "select * \n";
+			sql += "from member\n";
+			sql += "where userid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				flag = false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs, pstmt, conn);
+		}
+		
+		return flag;
+	}
 
 }

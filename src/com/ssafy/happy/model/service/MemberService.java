@@ -18,4 +18,7 @@ public interface MemberService {
 	
 	// 비밀번호 찾기
 	String find(String userId, String email);
+	
+	// 아이디 중복 여부 검사
+	boolean chkId(String userId);
 }

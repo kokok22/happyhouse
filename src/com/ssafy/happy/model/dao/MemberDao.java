@@ -18,4 +18,7 @@ public interface MemberDao {
 	
 	// 비밇번호 찾기
 	String find(String userId, String email);
+	
+	// 아이디 중복 확인
+	boolean chkId(String userId);
 }
