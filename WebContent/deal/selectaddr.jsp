@@ -25,7 +25,7 @@ $(document).ready(function(){
 				,{act:"gugun", sido:$("#sido").val()}
 				,function(data, status){
 					$("#gugun").empty();
-					$("#gugun").append('<option value="0">선택</option>');
+					$("#gugun").append('<option value="0">시/구/군</option>');
 					$.each(data, function(index, vo) {
 						$("#gugun").append("<option value='"+vo.gugun_code+"'>"+vo.gugun_name+"</option>");
 					});//each
@@ -38,7 +38,7 @@ $(document).ready(function(){
 				,{act:"dong", gugun:$("#gugun").val()}
 				,function(data, status){
 					$("#dong").empty();
-					$("#dong").append('<option value="0">선택</option>');
+					$("#dong").append('<option value="0">동</option>');
 					$.each(data, function(index, vo) {
 						$("#dong").append("<option value='"+vo.dong+"'>"+vo.dong+"</option>");
 					});//each
@@ -50,17 +50,16 @@ $(document).ready(function(){
 		$.get("${pageContext.request.contextPath}/map"
 				,{act:"apt", dong:$("#dong").val()}
 				,function(data, status){
-					$("#searchResult").empty();
+					$("tbody").empty();
 					$.each(data, function(index, vo) {
-						let str = "<tr class="+colorArr[index%3]+">"
-						+ "<td>" + vo.no + "</td>"
-						+ "<td>" + vo.dong + "</td>"
+						let str = "<tr>"
+						+ "<td>" + (index+1) + "</td>"
 						+ "<td>" + vo.aptName + "</td>"
 						+ "<td>" + vo.jibun + "</td>"
-						+ "<td>" + vo.code
+						+ "<td>" + vo.price + "</td>"
+						+ "<td>" + vo.Date + "</td>"
 						+ "</td><td id='lat_"+index+"'></td><td id='lng_"+index+"'></td></tr>";
 						$("tbody").append(str);
-						$("#searchResult").append(vo.dong+" "+vo.aptName+" "+vo.jibun+"<br>");
 					});//each
 					geocode(data);
 				}//function

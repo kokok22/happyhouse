@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import com.ssafy.happy.model.DealDto;
 import com.ssafy.happy.model.HouseInfoDto;
 import com.ssafy.happy.model.SidoGugunCodeDto;
 import com.ssafy.happy.model.service.HouseMapServiceImpl;
@@ -107,17 +108,17 @@ public class HouseMapController extends HttpServlet {
 		else if("apt".equals(act)) {
 			String dong = request.getParameter("dong");
 			PrintWriter out = response.getWriter();
-			List<HouseInfoDto> list = null;
+			List<DealDto> list = null;
 			JSONArray arr = new JSONArray();
 			try {
 				list = HouseMapServiceImpl.getHouseMapService().getAptInDong(dong);
-				for(HouseInfoDto dto : list) {
+				for(DealDto dto : list) {
 					JSONObject obj = new JSONObject();
 					obj.put("no", dto.getNo());
-					obj.put("dong", dto.getDong());
 					obj.put("aptName", dto.getAptName());
-					obj.put("code", dto.getCode());
 					obj.put("jibun", dto.getJibun());
+					obj.put("price", dto.getDealAmount());
+					obj.put("Date", dto.getDealYear()+"/"+dto.getDealMonth()+"/"+dto.getDealDay());
 					arr.add(obj);
 				}
 			} catch (Exception e) {
