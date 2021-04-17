@@ -23,7 +23,17 @@
 		<link rel="stylesheet" href="${root}/assets/css/mine.css" />
 	</head>
 	<script type="text/javascript">
-		function login() {
+		$(document).ready(function(){
+		 
+	    $("form[id=loginform]").keydown(function (key) {
+	 
+	        if(key.keyCode == 13){
+	            login();
+	        }
+	 
+	    });
+	    
+	    function login() {
 			if($("#userId").val() == "") {
 				alert("아이디를 입력해주세요.");
 				return;
@@ -34,6 +44,9 @@
 				$("#loginform").attr("action", "${root}/main").submit();
 			}
 		}
+		
+	});
+	
 	</script>
 	
 	<body>
