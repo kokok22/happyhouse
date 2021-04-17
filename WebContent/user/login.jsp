@@ -22,9 +22,9 @@
 		<link rel="stylesheet" href="${root}/assets/css/main.css" />
 		<link rel="stylesheet" href="${root}/assets/css/mine.css" />
 	</head>
-	<script type="text/javascript">
+	<script type="text/javascript">	
 		$(document).ready(function(){
-		 
+			// enter로 로그인 실행
 	    $("form[id=loginform]").keydown(function (key) {
 	 
 	        if(key.keyCode == 13){
