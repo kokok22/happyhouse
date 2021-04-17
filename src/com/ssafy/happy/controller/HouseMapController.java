@@ -107,11 +107,16 @@ public class HouseMapController extends HttpServlet {
 		}//dong
 		else if("apt".equals(act)) {
 			String dong = request.getParameter("dong");
+			String aptname = request.getParameter("aptname");
+			String sort = request.getParameter("sort");
+			
+			System.out.println(aptname+" "+sort);
+			
 			PrintWriter out = response.getWriter();
 			List<DealDto> list = null;
 			JSONArray arr = new JSONArray();
 			try {
-				list = HouseMapServiceImpl.getHouseMapService().getAptInDong(dong);
+				list = HouseMapServiceImpl.getHouseMapService().getAptInDong(dong, aptname, sort);
 				for(DealDto dto : list) {
 					JSONObject obj = new JSONObject();
 					obj.put("no", dto.getNo());

@@ -116,7 +116,7 @@ public class HouseMapDaoImpl implements HouseMapDao {
 	}
 
 	@Override
-	public List<DealDto> getAptInDong(String dong) throws Exception {
+	public List<DealDto> getAptInDong(String dong, String aptname, String sort) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -126,8 +126,18 @@ public class HouseMapDaoImpl implements HouseMapDao {
 			StringBuilder sql = new StringBuilder();
 			sql.append("SELECT d.no, d.dong, d.code, d.AptName, d.dealYear, d.dealMonth, d.dealday, d.jibun, d.dealAmount\n");
 			sql.append("FROM housedeal as d\n");
-			sql.append("where d.dong = ? \n");
-			sql.append("ORDER BY AptName, dealyear, length(dealmonth), dealmonth, length(dealday), dealday");
+			if(aptname.equals(""))
+				sql.append("where d.dong = ? \n");
+			else
+				sql.append("where d.dong = ? and d.AptName like '%"+aptname+"%'\n");
+			
+			if(sort.equals("default"))				// 기본 정렬
+				sql.append("ORDER BY AptName, dealyear, length(dealmonth), dealmonth, length(dealday), dealday");
+			else if(sort.equals("high-price"))		// 높은 가격 순
+				sql.append("ORDER BY AptName, dealAmount desc, dealyear, length(dealmonth), dealmonth, length(dealday), dealday");
+			else if(sort.equals("lower-price"))		// 낮은 가격 순
+				sql.append("ORDER BY AptName, dealAmount, dealyear, length(dealmonth), dealmonth, length(dealday), dealday");
+			
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, dong);
 			rs = pstmt.executeQuery();

@@ -46,11 +46,18 @@ $(document).ready(function(){
 				, "json"
 		);//get
 	});//change
-	$("#dong").change(function() {
-		$.get("${pageContext.request.contextPath}/map"
-				,{act:"apt", dong:$("#dong").val()}
-				,function(data, status){
-					$("tbody").empty();
+});//ready
+
+function search(){
+	$.get("${pageContext.request.contextPath}/map"
+			,{act:"apt", dong:$("#dong").val(), aptname:$("#aptname").val(), sort:$("#sort").val() }
+			,function(data, status){
+				$("tbody").empty();
+				if(data.length==0){
+					let str = "<tr><td colspan='5'><center>저장된 거래 데이터가 없습니다.<center></td></tr>";
+					$("tbody").append(str);
+				}
+				else
 					$.each(data, function(index, vo) {
 						let str = "<tr>"
 						+ "<td>" + (index+1) + "</td>"
@@ -61,12 +68,12 @@ $(document).ready(function(){
 						+ "</td><td id='lat_"+index+"'></td><td id='lng_"+index+"'></td></tr>";
 						$("tbody").append(str);
 					});//each
-					geocode(data);
-				}//function
-				, "json"
-		);//get
-	});//change
-});//ready
+				//geocode(data);
+			}//function
+			, "json"
+	);//get
+}
+/*
 function geocode(jsonData) {
 	let idx = 0;
 	$.each(jsonData, function(index, vo) {
@@ -88,6 +95,7 @@ function geocode(jsonData) {
 		);//get
 	});//each
 }
+*/
 </script>
 </head>
 <body>

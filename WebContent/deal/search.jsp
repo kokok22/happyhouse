@@ -47,17 +47,17 @@
 										<div class="pb-1">지역</div>
 										<div class="select-wrapper pb-2">
 											<select name="sido" id="sido">
-												<option value="all" selected>도/광역시</option>
+												<option value="0" selected>도/광역시</option>
 											</select>
 										</div>
 				            			<div class="select-wrapper pb-2">
 				                			<select name="gugun" id="gugun">
-				                    			<option value="all" selected>시/구/군</option>
+				                    			<option value="0" selected>시/구/군</option>
 				                			</select>
 				            			</div>
 				            			<div class="select-wrapper pb-2">
 				                			<select name="cars" id="dong">
-				                    			<option value="all" selected>동</option>
+				                    			<option value="0" selected>동</option>
 				                   			</select>
 				            			</div>
 									</div>
@@ -70,7 +70,7 @@
 									<div class="pb-3">
 										<div class="pb-1">정렬</div>
 										<div class="select-wrapper pb-2">
-				                			<select name="gugun" id="gugun">
+				                			<select name="sort" id="sort">
 				                    			<option value="default" selected>최신 등록순</option>
 				                    			<option value="high-price">높은 가격순</option>
 				                    			<option value="lower-price">낮은 가격순</option>
