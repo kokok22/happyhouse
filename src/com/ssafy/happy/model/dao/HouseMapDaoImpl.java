@@ -124,7 +124,7 @@ public class HouseMapDaoImpl implements HouseMapDao {
 		try {
 			conn = DBUtil.getConnect();
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT d.no, d.dong, d.code, d.AptName, d.dealYear, d.dealMonth, d.dealday, d.jibun, d.dealAmount\n");
+			sql.append("SELECT d.no, d.dong, d.code, d.AptName, d.dealYear, d.dealMonth, d.dealday, d.jibun, d.dealAmount, i.lat, i.lng\n");
 			sql.append("FROM housedeal as d, houseinfo as i\n");
 			if(aptname.equals(""))
 				sql.append("where d.dong = ? and d.AptName = i.AptName\n");
@@ -152,6 +152,8 @@ public class HouseMapDaoImpl implements HouseMapDao {
 				dto.setDealDay(rs.getString("dealday"));
 				dto.setJibun(rs.getString("jibun"));
 				dto.setDealAmount(rs.getString("dealAmount"));
+				dto.setLat(rs.getString("lat"));
+				dto.setLng(rs.getString("lng"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {

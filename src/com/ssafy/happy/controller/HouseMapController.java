@@ -63,6 +63,9 @@ public class HouseMapController extends HttpServlet {
 				obj.put("jibun", dto.getJibun());
 				obj.put("price", dto.getDealAmount());
 				obj.put("Date", dto.getDealYear()+"/"+dto.getDealMonth()+"/"+dto.getDealDay());
+				obj.put("lat", dto.getLat());
+				obj.put("lng", dto.getLng());
+				
 				arr.add(obj);
 			}
 		} catch (Exception e) {

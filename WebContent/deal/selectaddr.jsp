@@ -65,28 +65,25 @@ function search(){
 						+ "<td>" + vo.jibun + "</td>"
 						+ "<td>" + vo.price + "</td>"
 						+ "<td>" + vo.Date + "</td>"
-						+ "</td><td id='lat_"+index+"'></td><td id='lng_"+index+"'></td></tr>";
+						+ "</td><td id='lat_"+vo.lat+"'></td><td id='lng_"+vo.lng+"'></td></tr>";
 						$("tbody").append(str);
 					});//each
-				//geocode(data);
+				geocode(data);
 			}//function
 			, "json"
 	);//get
 }
-/*
+
 function geocode(jsonData) {
 	let idx = 0;
 	$.each(jsonData, function(index, vo) {
-		let tmpLat;
-		let tmpLng;
+		let tmpLat = vo.lat;
+		let tmpLng = vo.lng;
 		$.get("https://maps.googleapis.com/maps/api/geocode/json"
 				,{	key:'Google API Key'
 					, address:vo.dong+"+"+vo.aptName+"+"+vo.jibun
 				}
 				, function(data, status) {
-					//alert(data.results[0].geometry.location.lat);
-					tmpLat = data.results[0].geometry.location.lat;
-					tmpLng = data.results[0].geometry.location.lng;
 					$("#lat_"+index).text(tmpLat);
 					$("#lng_"+index).text(tmpLng);
 					addMarker(tmpLat, tmpLng, vo.aptName);
@@ -95,7 +92,6 @@ function geocode(jsonData) {
 		);//get
 	});//each
 }
-*/
 </script>
 </head>
 <body>

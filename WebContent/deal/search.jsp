@@ -108,8 +108,8 @@
 								<nav class="pagination-container">
 									<div class="pagination">
 										<span class="pagination-inner center">
-										<a href="#">1</a>
-										<a class="pagination-active" href="#">2</a>
+										<a class="pagination-active" href="#">1</a>
+										<a href="#">2</a>
 										<a href="#">3</a>
 										<a href="#">4</a>
 										<a href="#">5</a>
