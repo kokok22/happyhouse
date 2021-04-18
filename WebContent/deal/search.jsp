@@ -21,9 +21,16 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAH4mGtGTjkph4bcBxYyfERsJaegQgoIHA&callback=initMap"
         async defer></script>
-        
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<link rel="stylesheet" href="${root}/assets/css/main.css" />
 		<link rel="stylesheet" href="${root}/assets/css/mine.css" />
+		<link rel="stylesheet" href="${root}/assets/css/pagination.css" />
+		<script>
+			$('.pagination-inner a').on('click', function() {
+				$(this).siblings().removeClass('pagination-active');
+				$(this).addClass('pagination-active');
+			})
+		</script>
 	</head>
 	<body>
 		<%@ include file="/user/confirm.jsp" %>
@@ -77,7 +84,7 @@
 				                			</select>
 				            			</div>
 									</div>
-									<div class="pb-3">
+									<div class="py-3">
 										<input type="button" value="SEARCH" class="special" style="width:100%;" onclick="javascript:search();"/>
 									</div>
 								</form>
@@ -98,6 +105,18 @@
 									<tbody>
 									</tbody>
 								</table>
+								<nav class="pagination-container">
+									<div class="pagination">
+										<span class="pagination-inner center">
+										<a href="#">1</a>
+										<a class="pagination-active" href="#">2</a>
+										<a href="#">3</a>
+										<a href="#">4</a>
+										<a href="#">5</a>
+										<a href="#">6</a>
+										</span>
+									</div>
+								</nav>
 							</div>
 						</div>
 					</div>

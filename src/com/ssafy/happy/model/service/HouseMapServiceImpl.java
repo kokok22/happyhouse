@@ -38,5 +38,10 @@ public class HouseMapServiceImpl implements HouseMapService {
 	public List<DealDto> getAptInDong(String dong, String aptname, String sort) throws Exception {
 		return HouseMapDaoImpl.getHouseMapDao().getAptInDong(dong, aptname, sort);
 	}
+	
+	@Override
+	public List<DealDto> getDeal(String dong, String aptname, String sort) throws Exception {
+		return HouseMapDaoImpl.getHouseMapDao().getDeal(dong, aptname, sort);
+	}
 
 }
