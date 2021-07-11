@@ -4,4 +4,3 @@
 
 - 언어 : JavaScript(JSTL/EL), Java, HTML, CSS <br>
 - DB : MySQL <br>
-- 서버 : Tomcat <br>
